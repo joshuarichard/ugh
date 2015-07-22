@@ -1,5 +1,5 @@
 # ugh
-Prints out a word of your choice to the console in fun patterns.
+Prints out a word of your choice to the console in fun patterns. Right now the output is a very basic "down and to the right" pattern, but more fun designs will be added as the project grows. :)
 
 ### Running
 ugh takes exactly three arguments to run.
