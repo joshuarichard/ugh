@@ -3,34 +3,25 @@
 import sys
 import time
 
-def printError():
+def print_error():
     """Prints error to the console if the correct number of arguments is not specified."""
-    print "Incorrect params given. Require $ python ugh-1.1.py [word] [times] [sleep]"
+    print "Incorrect params given." 
+    print "python ugh-1.1.py [word] [times] [sleep] [design]"
     print "[word]  - the word to be printed"
     print "[times] - the number of times you want to print the word (both down and across)"
     print "[sleep] - how long to sleep for in between the printed lines"
+    # print "[design] - array of integers of all designs to execute in order"
 
-def main():
-    """Main function. Does essentially everything."""
+def check_env():
+    """Check environment for the correct number of args."""
 
-    # before we do anything make sure there are the correct number of params
-    if(len(sys.argv[1]) > 1):
-        if(len(sys.argv[2]) > 1):
-            if(len(sys.argv[3]) > 1):
-                printError()
-                exit()
-        else:
-            printError()
-            exit()
-    else:
+    # add argv[4] for design
+    if(len(sys.argv[1]) < 1 and len(sys.argv[2] < 1 and len(sys.argv[3] < 1))):
         printError()
         exit()
-        
-    word = str(sys.argv[1])
-    times = int(sys.argv[2])
-    sleep = float(sys.argv[3])
 
-    # init
+def down_and_right(word, times, sleep):
+    """Down and to the right."""
     x = 0
     y = 0
     word_iter = word
@@ -41,11 +32,9 @@ def main():
     # sleep so it's funnier
     time.sleep(sleep)
 
-    # now start looping - nested to going across and down
+    # going across and down
     while (x < times):
         while (y < times):
-
-            # add the word an extra time for each new line
             word_iter += " " + word
             print word_iter
 
@@ -55,6 +44,27 @@ def main():
 
         # next iter    
         x = x + 1
+
+def main():
+    """Main function."""
+
+    # before we do anything make sure there are the correct number of params
+    check_env()
+        
+    word = str(sys.argv[1])
+    times = int(sys.argv[2])
+    sleep = float(sys.argv[3])
+    # design = str(sys.argv[4]) (array???)
+    
+    options = {1 : down_and_right,
+               2 : down_and_left, 
+               3 : stars,
+    }
+
+
+    # for each number in the array
+    # case where you execute each design's corresponding method
+    # 4,2,1,5,3,1,2
     
     # now we're done going across so go straight down
     while(True):
