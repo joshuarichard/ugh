@@ -4,7 +4,7 @@ Prints out a word of your choice to the console in fun patterns. Right now the o
 ### Running
 ugh takes exactly three arguments to run.
 
-```
+```python
 $ python [word] [times] [sleep]
 ```
 
